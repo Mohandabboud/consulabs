@@ -3,7 +3,7 @@ var editEmployee = document.getElementById("Edit-employee");
 var editEmployee1 = document.getElementById("Edit-employee1")
 
 var STAFF = [];
-var keys = [0, 1, 2, 3];
+/*var keys = [0, 1, 2, 3];
 var values = ["Development", "Creative", "Commercial", "Directive"];
 var DEPARTMENTS = new Map();
 for(var i = 0; i < keys.length; i++){
@@ -11,6 +11,13 @@ for(var i = 0; i < keys.length; i++){
 }
 for (var key of DEPARTMENTS.keys()) {
     console.log(key + " : " + DEPARTMENTS.get(key) + "</br>")
+}
+*/
+var DEPARTMENTS = {
+    development: "Development", 
+    creative: "Creative", 
+    commercial: "Commercial", 
+    directive: "Directive"
 }
 
 function showHome () { 
@@ -35,7 +42,7 @@ function showForm() {
     var Employee = {};
     Employee.firstName = document.querySelector("#fname").value;
     Employee.lastName = document.querySelector("#lname").value;
-    Employee.role = document.querySelector("#DEPARTMENTS").value;
+    Employee.role = document.querySelector("#Role").value;
     Employee.salary = document.querySelector("#salary").value;
     console.log(Employee);
     STAFF.push(Employee);
@@ -102,14 +109,15 @@ function showHome () {
 
 var submit = document.getElementById("submit");
 submit.addEventListener("click" , showForm);
-submit.addEventListener("click" , showHome);
+//submit.addEventListener("click" , showHome);
 
 function goBack() {
     Home.style.display = "block";
     editEmployee.style.display = "none";
 }
 var back = document.querySelector("#back");
-submit.addEventListener("click" , goBack)
+back.addEventListener("click" , showHome);
+back.addEventListener("click" , goBack)
 
 function AddEmployee() {
     Home.style.display = "none";
