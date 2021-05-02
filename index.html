@@ -7,11 +7,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
   </head>
   <body>
-    <div id="Home" style="display: none;">
+    <div id="Home">
         <h1>Employees list</h1>
         <h1>Edit Employees</h1>
         <table>
@@ -29,7 +27,8 @@
           </tbody>
           </table>
           <br><br>   
-          <button  id="Add">Add Employee</button>      
+          <button  id="Add">Add Employee</button>
+          <button  id="stats">go to stats</button>       
     </div>
     <div id="Edit-employee" >
         <form>
@@ -46,13 +45,29 @@
                   <option value="Directive">Directive</option>
                 </select><br><br>
                 <label for="salary">Salary</label>
-                <input type="text" name="salary" id="salary" placeholder="insert salary"><br><br>
+                <input type="number" name="salary" id="salary" placeholder="insert salary"><br><br>
             </div>        
         </form>
         <button  id="submit" >submit</button>
         <button  id="back" >back</button>
     </div>
-    <div id="Stats"></div>
+    <div id="Stats">
+      <h1>Stats</h1>
+      <form>
+        <label for="department">deparment</label>
+        <select id="Role">
+          <option value="Development">Development</option>
+          <option value="Creative">Creative</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Directive">Directive</option>
+        </select><br><br>
+        <label for="minAge">min-age</label>
+        <input type="number" name="minAge" id="minAge"><br><br>
+        <label for="maxAge">max-age</label>
+        <input type="number" name="maxAge" id="maxAge"><br><br>
+      </form>
+      <button  id="analyze">analyze</button>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

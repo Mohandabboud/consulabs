@@ -9,19 +9,24 @@
 <body>
     <div id="Edit-employee1">
         <form>
-            <div class="">
+            <div class="form">
               <label for="Id">Id</label>
                 <label for="fname1">First name</label>
                 <input type="text" name="fname1" id="fname1" placeholder="Add your first name"><br><br>
                 <label for="lname1">Last name</label>
                 <input type="text" name="lname1" id="lname1" placeholder="Add your last name"><br><br>
                 <label for="DEPARTMENTS1">Role</label>
-                <input list="DEPARTMENTS1" id="DEPARTMENTS1" name="DEPARTMENTS1" ><br><br>
+                <select id="Role">
+                    <option value="Development">Development</option>
+                    <option value="Creative">Creative</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Directive">Directive</option>
+                  </select><br><br>
                 <label for="salary1">Salary</label>
-                <input type="text" name="salary1" id="salary1" placeholder="insert salary"><br><br>
+                <input type="number" name="salary1" id="salary1" placeholder="insert salary"><br><br>
             </div>        
         </form>
-        <button  id="Edit" >Edit</button>
+        <a  id="Edit" >Edit</a>
     </div>
     
     <script src="EditForm.js"></script>

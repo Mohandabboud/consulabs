@@ -1,8 +1,19 @@
 var Home = document.getElementById("Home")
 var editEmployee = document.getElementById("Edit-employee");
-var editEmployee1 = document.getElementById("Edit-employee1")
+var editEmployee1 = document.getElementById("Edit-employee1");
+var Stats = document.getElementById("Stats");
+console.log(Stats)
 
 var STAFF = [];
+if (STAFF.length === 0) {
+    Home.style.display = "none";
+    editEmployee.style.display = "block";
+    Stats.style.display = "none";
+} else {
+    Home.style.display = "block";
+    editEmployee.style.display = "none";
+    Stats.style.display = "none";
+}
 /*var keys = [0, 1, 2, 3];
 var values = ["Development", "Creative", "Commercial", "Directive"];
 var DEPARTMENTS = new Map();
@@ -37,6 +48,8 @@ function showHome () {
 
     })
 }
+
+
 
 function showForm() {
     var Employee = {};
@@ -87,29 +100,36 @@ function showHome () {
             td.innerHTML = STAFF[i][key]
             row.appendChild(td)
         }
-        var button1 = document.createElement("a");
+        var a = document.createElement("a");
         var button2 = document.createElement("button");
-        button1.innerHTML = "Edit";
-        button1.className = "button"
+        a.innerHTML = "Edit";
+        a.className = "button"
         button2.innerHTML = "Delete";
-        row.appendChild(button1);
+        row.appendChild(a);
         row.appendChild(button2);
         card.appendChild(row);
         var firstButton = document.getElementsByClassName("button")[i];
         console.log(firstButton);
-        function ChangeHref() {
-            var url = new URL("http://127.0.0.1:8000/EditForm.html")
-            url.searchParams.append("search", i-1)
-            firstButton.href = url;
-            console.log(url)
-            }
-        firstButton.addEventListener("click", ChangeHref)
-    }
+        //function ChangeHref() {
+        a.href = "http://127.0.0.1:8000/EditForm.html?Id="+Id
+        //    }
+     //   firstButton.addEventListener("click", ChangeHref)
+    //}
+}
 }
 
 var submit = document.getElementById("submit");
 submit.addEventListener("click" , showForm);
 //submit.addEventListener("click" , showHome);
+
+function getEmployee() {
+    console.log(STAFF);
+    Home.style.display = "none";
+    editEmployee.style.display = "none";
+    Stats.style.display = "block";
+}
+var stats = document.getElementById("stats");
+stats.addEventListener("click", getEmployee)
 
 function goBack() {
     Home.style.display = "block";
@@ -133,8 +153,44 @@ window.addEventListener("load", showForm)
 window.addEventListener("load", showHome)  
 }
 */
-if (STAFF.length === 0) {
-    Home.style.display = "none";
-    editEmployee.style.display = "block";
+
+function Analyze() {
+    var department = document.getElementById("Role").value;
+    var minAge = document.getElementById("minAge").value;
+    var maxAge = document.getElementById("maxAge").value;
+    var number = 0;
+    var Salary = 0;
+    var avgSalary = 0;
+    var result = [];
+    STAFF.forEach( function(item){
+        if (item.role === department) {
+            Salary =  Salary + item.salary;
+            result.push(item);
+            number++;
+            var ul = document.createElement("ul");
+            var li1 = document.createElement("li");
+            var li2 = document.createElement("li");
+            var li3 = document.createElement("li");
+            var li4 = document.createElement("li");
+            li1.innerHTML = item.firstName;
+            li2.innerHTML = item.lastName;
+            li3.innerHTML = item.role;
+            li4.innerHTML = item.salary;
+            ul.appendChild(li1);
+            ul.appendChild(li2);
+            ul.appendChild(li3);
+            ul.appendChild(li4);
+            Stats.appendChild(ul)
+            console.log(Salary)
+        }
+    })
+    avgSalary = Salary/number;
+    console.log(Salary)
+    console.log(number)
+    var p = document.createElement("p");
+    p.innerHTML = "In the dept. "+department+" between "+minAge+" and "+maxAge+" the are "+number+" employees that takes "+avgSalary+" on average."
+    Stats.appendChild(p)
 }
 
+var analyze = document.getElementById("analyze");
+analyze.addEventListener("click", Analyze)
