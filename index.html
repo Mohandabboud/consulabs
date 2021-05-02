@@ -4,22 +4,22 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
     <div id="Home">
-        <h1>Employees list</h1>
-        <h1>Edit Employees</h1>
+        <h1 style="display: flex; justify-content: center">Employees list</h1>
         <table>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>First-Name</th>
-              <th>Last-Name</th>
-              <th>Role</th>
-              <th>Salary</th>
+              <th>Id  </th>
+              <th>Name  </th>
+              <th>Last-Name  </th>
+              <th>Role  </th>
+              <th>Salary  </th>
             </tr>
           </thead>
           <tbody class="tbody">
@@ -32,7 +32,8 @@
     </div>
     <div id="Edit-employee" >
         <form>
-            <div class="">
+            <div class="mb-3">
+              <h1 style="display: flex; justify-content: center" >Insert an Employee</h1><br><br>
                 <label for="fname">First name</label>
                 <input type="text" name="fname" id="fname" placeholder="Add your first name"><br><br>
                 <label for="lname">Last name</label>
@@ -55,7 +56,7 @@
       <h1>Stats</h1>
       <form>
         <label for="department">deparment</label>
-        <select id="Role">
+        <select id="Role1">
           <option value="Development">Development</option>
           <option value="Creative">Creative</option>
           <option value="Commercial">Commercial</option>
@@ -67,6 +68,7 @@
         <input type="number" name="maxAge" id="maxAge"><br><br>
       </form>
       <button  id="analyze">analyze</button>
+      <button  id="back1">back</button>
     </div>
 
     <!-- Optional JavaScript -->

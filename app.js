@@ -155,7 +155,9 @@ window.addEventListener("load", showHome)
 */
 
 function Analyze() {
-    var department = document.getElementById("Role").value;
+    var department = document.getElementById("Role1");
+    var res = department.options[department.selectedIndex].value;
+    console.log(department)
     var minAge = document.getElementById("minAge").value;
     var maxAge = document.getElementById("maxAge").value;
     var number = 0;
@@ -163,8 +165,8 @@ function Analyze() {
     var avgSalary = 0;
     var result = [];
     STAFF.forEach( function(item){
-        if (item.role === department) {
-            Salary =  Salary + item.salary;
+        if (item.role === res) {
+            Salary =  +Salary + +item.salary;
             result.push(item);
             number++;
             var ul = document.createElement("ul");
@@ -188,9 +190,18 @@ function Analyze() {
     console.log(Salary)
     console.log(number)
     var p = document.createElement("p");
-    p.innerHTML = "In the dept. "+department+" between "+minAge+" and "+maxAge+" the are "+number+" employees that takes "+avgSalary+" on average."
+    p.innerHTML = "In the dept. "+res+" between "+minAge+" and "+maxAge+" the are "+number+" employees that takes "+avgSalary+" on average."
     Stats.appendChild(p)
 }
 
 var analyze = document.getElementById("analyze");
-analyze.addEventListener("click", Analyze)
+analyze.addEventListener("click", Analyze);
+
+function getBack () {
+    Home.style.display = "block";
+    editEmployee.style.display = "none";
+    Stats.style.display = "none";
+}
+
+var goHomePage = document.getElementById("back1");
+goHomePage.addEventListener("click", getBack)
