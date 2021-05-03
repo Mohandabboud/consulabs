@@ -53,8 +53,8 @@ function showForm() {
     console.log(STAFF);
 }
 
-var u = 0;
-var h = 0;
+var editCounter = 0;
+var deleteCounter = 0;
 var l = 0;
 function showHome () { 
     var number = 1;
@@ -86,47 +86,45 @@ function showHome () {
         console.log(firstButton);
         var secondButton = document.getElementsByClassName(l)[0];
         console.log(secondButton);
-        //console.log(firstButton);
-        //a.href = "http://127.0.0.1:8000/EditForm.html?Id="+Id
         function editt() {
             Home.style.display = "none";
             editEmployee.style.display = "block";
             Stats.style.display = "none"; 
-            u = +firstButton.className;
+            editCounter = +firstButton.className;
         }
         firstButton.addEventListener("click", editt);  
         function del() {
-            h = +secondButton.className - 10;
-            console.log(h);
-            document.getElementsByClassName("tbody")[0].deleteRow(h);
+            deleteCounter = +secondButton.className - 10;
+            console.log(deleteCounter);
+            document.getElementsByClassName("tbody")[0].deleteRow(deleteCounter);
       
         } 
         secondButton.addEventListener("click", del);
     }
 }
 function Eddit() {
-    console.log(u);
-    STAFF[u].firstName = document.querySelector("#fname").value;
-    STAFF[u].lastName = document.querySelector("#lname").value;
-    STAFF[u].role = document.querySelector("#Role").value;
-    STAFF[u].salary = document.querySelector("#salary").value;
-    console.log(STAFF[u])
+    console.log(editCounter);
+    STAFF[editCounter].firstName = document.querySelector("#fname").value;
+    STAFF[editCounter].lastName = document.querySelector("#lname").value;
+    STAFF[editCounter].role = document.querySelector("#Role").value;
+    STAFF[editCounter].salary = document.querySelector("#salary").value;
+    console.log(STAFF[editCounter])
     Home.style.display = "block";
     editEmployee.style.display = "none";
     Stats.style.display = "none";
-    var j = document.getElementsByClassName("tr")[u];
+    var j = document.getElementsByClassName("tr")[editCounter];
     console.log(j)
     var td1 = j.getElementsByClassName("td")[0];
     var td2 = j.getElementsByClassName("td")[1];
     var td3 = j.getElementsByClassName("td")[2];
     var td4 = j.getElementsByClassName("td")[3];
-    td1.innerHTML = STAFF[u].firstName;
-    td2.innerHTML = STAFF[u].lastName;
-    td3.innerHTML = STAFF[u].role;
-    td4.innerHTML = STAFF[u].salary;
+    td1.innerHTML = STAFF[editCounter].firstName;
+    td2.innerHTML = STAFF[editCounter].lastName;
+    td3.innerHTML = STAFF[editCounter].role;
+    td4.innerHTML = STAFF[editCounter].salary;
 }
-var z = document.getElementById("Edit0")
-z.addEventListener("click", Eddit)
+var eidtTheTable = document.getElementById("Edit0")
+eidtTheTable.addEventListener("click", Eddit)
 
 
 var submit = document.getElementById("submit");
