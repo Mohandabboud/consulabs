@@ -56,6 +56,9 @@ function showForm() {
 var editCounter = 0;
 var deleteCounter = 0;
 var l = 0;
+var m = 0;
+var t = 10;
+var f = 100;
 function showHome () { 
     var number = 1;
     var card = document.querySelector(".tbody")
@@ -91,13 +94,28 @@ function showHome () {
             editEmployee.style.display = "block";
             Stats.style.display = "none"; 
             editCounter = +firstButton.className;
+            var fName = document.getElementById("fname").value;
+            console.log(fName)
+            fName = "";
+            console.log(fName)
         }
         firstButton.addEventListener("click", editt);  
         function del() {
-            deleteCounter = +secondButton.className - 10;
-            console.log(deleteCounter);
-            document.getElementsByClassName("tbody")[0].deleteRow(deleteCounter);
-      
+            if (m > 0 &&  +secondButton.className - 10 > deleteCounter && +secondButton.className > f) {
+                t = 10 + (m - 0);
+                console.log(t)
+                deleteCounter = +secondButton.className - (t);
+                console.log(deleteCounter);
+                document.getElementsByClassName("tbody")[0].deleteRow(deleteCounter);
+                m++; 
+            } else{            
+                deleteCounter = +secondButton.className - 10;
+                f = +secondButton.className;
+                console.log(deleteCounter);
+                document.getElementsByClassName("tbody")[0].deleteRow(deleteCounter);
+                m++;
+            }
+
         } 
         secondButton.addEventListener("click", del);
     }
