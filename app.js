@@ -52,32 +52,7 @@ function showForm() {
     STAFF.push(Employee);
     console.log(STAFF);
 }
-/*
-function showHome () { 
-    var number = 1;
-    var card = document.querySelector(".tbody")
-    STAFF.forEach(function (item) {
-        if (item.firstName = number || typeof Id === 'undefined') {
-        var Id = number;
-        var row = document.createElement("tr");
-        row.innerHTML= Id;
-        for (const key in item) {
-            var td = document.createElement("td");
-            td.innerHTML = item[key]
-            row.appendChild(td)
-        }
-        number++;
-        var button1 = document.createElement("button");
-        var button2 = document.createElement("button");
-        button1.innerHTML = "Edit";
-        button2.innerHTML = "Delete";
-        row.appendChild(button1);
-        row.appendChild(button2);
-        card.appendChild(row);
-    }
-    })
-}
-*/
+
 var u = 0;
 var h = 0;
 var l = 0;
@@ -156,7 +131,6 @@ z.addEventListener("click", Eddit)
 
 var submit = document.getElementById("submit");
 submit.addEventListener("click" , showForm);
-//submit.addEventListener("click" , showHome);
 
 function getEmployee() {
     console.log(STAFF);
@@ -182,13 +156,6 @@ function AddEmployee() {
 var add = document.getElementById("Add");
 add.addEventListener("click" , AddEmployee)
 
-/*
-if (Object.keys(Employee).length === 0) {
-window.addEventListener("load", showForm)
-} else {
-window.addEventListener("load", showHome)  
-}
-*/
 
 function Analyze() {
     var department = document.getElementById("Role1");
@@ -205,7 +172,12 @@ function Analyze() {
             Salary =  +Salary + +item.salary;
             result.push(item);
             number++;
+            var ul = document.getElementsByClassName("ul")[0];
+            if (ul) {
+                ul.innerHTML = "";
+                }
             var ul = document.createElement("ul");
+            ul.className = "ul";
             var li1 = document.createElement("li");
             var li2 = document.createElement("li");
             var li3 = document.createElement("li");
@@ -225,7 +197,12 @@ function Analyze() {
     avgSalary = Salary/number;
     console.log(Salary)
     console.log(number)
+    var paragraph = document.getElementsByClassName("p")[0];
+    if (paragraph) {
+    paragraph.innerHTML = "";
+    }
     var p = document.createElement("p");
+    p.className= "p";
     p.innerHTML = "In the dept. "+res+" between "+minAge+" and "+maxAge+" the are "+number+" employees that takes "+avgSalary+" on average."
     Stats.appendChild(p)
 }
