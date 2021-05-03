@@ -183,15 +183,19 @@ function Analyze() {
     var Salary = 0;
     var avgSalary = 0;
     var result = [];
+    var ul = document.getElementsByTagName("ul");
+    if (ul) {
+    var i;
+    for(i = 0 ; i < ul.length; i++)  {
+        ul[i].innerHTML = "";
+    }
+    }
     STAFF.forEach( function(item){
         if (item.role === res) {
             Salary =  +Salary + +item.salary;
             result.push(item);
             number++;
             var ul = document.getElementsByClassName("ul")[0];
-           /* if (ul) {
-                ul.innerHTML = "";
-                } */
             var ul = document.createElement("ul");
             ul.className = "ul";
             var li1 = document.createElement("li");
@@ -212,10 +216,13 @@ function Analyze() {
     })
     avgSalary = Salary/number;
     console.log(Salary)
-    console.log(number)
-    var paragraph = document.getElementsByClassName("p")[0];
+    console.log(number);
+    var paragraph = document.getElementsByTagName("p");
     if (paragraph) {
-    paragraph.innerHTML = "";
+    var i;
+    for(i = 0 ; i < paragraph.length; i++)  {
+        paragraph[i].innerHTML = "";
+    }
     }
     var p = document.createElement("p");
     p.className= "p";
