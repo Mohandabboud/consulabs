@@ -189,9 +189,9 @@ function Analyze() {
             result.push(item);
             number++;
             var ul = document.getElementsByClassName("ul")[0];
-            if (ul) {
+           /* if (ul) {
                 ul.innerHTML = "";
-                }
+                } */
             var ul = document.createElement("ul");
             ul.className = "ul";
             var li1 = document.createElement("li");
