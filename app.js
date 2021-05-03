@@ -14,16 +14,7 @@ if (STAFF.length === 0) {
     editEmployee.style.display = "none";
     Stats.style.display = "none";
 }
-/*var keys = [0, 1, 2, 3];
-var values = ["Development", "Creative", "Commercial", "Directive"];
-var DEPARTMENTS = new Map();
-for(var i = 0; i < keys.length; i++){
-    DEPARTMENTS.set(keys[i], values[i]);
-}
-for (var key of DEPARTMENTS.keys()) {
-    console.log(key + " : " + DEPARTMENTS.get(key) + "</br>")
-}
-*/
+
 var DEPARTMENTS = {
     development: "Development", 
     creative: "Creative", 
@@ -87,36 +78,81 @@ function showHome () {
     })
 }
 */
+var u = 0;
+var h = 0;
+var l = 0;
 function showHome () { 
     var number = 1;
     var card = document.querySelector(".tbody")
     var i;
     for (i =  STAFF.length-1 ; i < STAFF.length; i++) {
-        var Id = i;
+        var Id = document.createElement("td");
         var row = document.createElement("tr");
-        row.innerHTML= Id;
+        row.className = "tr";
+        Id.innerHTML= i;
+        row.appendChild(Id);
         for (const key in STAFF[i]) {
             var td = document.createElement("td");
+            td.className = "td"
             td.innerHTML = STAFF[i][key]
             row.appendChild(td)
         }
         var a = document.createElement("a");
-        var button2 = document.createElement("button");
+        var deleteButton = document.createElement("button");
         a.innerHTML = "Edit";
-        a.className = "button"
-        button2.innerHTML = "Delete";
+        a.className = i;
+        l = i +10;
+        deleteButton.innerHTML = "Delete";
+        deleteButton.className = l;
         row.appendChild(a);
-        row.appendChild(button2);
+        row.appendChild(deleteButton);
         card.appendChild(row);
-        var firstButton = document.getElementsByClassName("button")[i];
+        var firstButton = document.getElementsByClassName(i)[0];
         console.log(firstButton);
-        //function ChangeHref() {
-        a.href = "http://127.0.0.1:8000/EditForm.html?Id="+Id
-        //    }
-     //   firstButton.addEventListener("click", ChangeHref)
-    //}
+        var secondButton = document.getElementsByClassName(l)[0];
+        console.log(secondButton);
+        //console.log(firstButton);
+        //a.href = "http://127.0.0.1:8000/EditForm.html?Id="+Id
+        function editt() {
+            Home.style.display = "none";
+            editEmployee.style.display = "block";
+            Stats.style.display = "none"; 
+            u = +firstButton.className;
+        }
+        firstButton.addEventListener("click", editt);  
+        function del() {
+            h = +secondButton.className - 10;
+            console.log(h);
+            document.getElementsByClassName("tbody")[0].deleteRow(h);
+      
+        } 
+        secondButton.addEventListener("click", del);
+    }
 }
+function Eddit() {
+    console.log(u);
+    STAFF[u].firstName = document.querySelector("#fname").value;
+    STAFF[u].lastName = document.querySelector("#lname").value;
+    STAFF[u].role = document.querySelector("#Role").value;
+    STAFF[u].salary = document.querySelector("#salary").value;
+    console.log(STAFF[u])
+    Home.style.display = "block";
+    editEmployee.style.display = "none";
+    Stats.style.display = "none";
+    var j = document.getElementsByClassName("tr")[u];
+    console.log(j)
+    var td1 = j.getElementsByClassName("td")[0];
+    var td2 = j.getElementsByClassName("td")[1];
+    var td3 = j.getElementsByClassName("td")[2];
+    var td4 = j.getElementsByClassName("td")[3];
+    td1.innerHTML = STAFF[u].firstName;
+    td2.innerHTML = STAFF[u].lastName;
+    td3.innerHTML = STAFF[u].role;
+    td4.innerHTML = STAFF[u].salary;
 }
+var z = document.getElementById("Edit0")
+z.addEventListener("click", Eddit)
+
 
 var submit = document.getElementById("submit");
 submit.addEventListener("click" , showForm);
